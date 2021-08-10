@@ -13,6 +13,11 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,useUnifiedTopolog
 app.use('/api/pins',pinRoute);
 app.use('/api/users',userRoute);
 
-app.listen(8800,()=>{
+
+let port = process.env.PORT;
+if(port == null || port == ''){
+    port = 8800;
+}
+app.listen(port,()=>{
     console.log('backend server is running');
 })
